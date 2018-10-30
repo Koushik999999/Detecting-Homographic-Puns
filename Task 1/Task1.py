@@ -154,4 +154,4 @@ for s in test:
 if flag == 1:
     print('YES; the given context contains a pun')
 else:
-print('NO; the given context does not contain a pun')
+    print('NO; the given context does not contain a pun')
