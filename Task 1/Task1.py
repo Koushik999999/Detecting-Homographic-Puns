@@ -5,6 +5,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import datasets
 import spacy, fasttext
 import sys
+
+#test_final1.txt = sys.argv[1]
+
 # model = gensim.models.Word2Vec.load_word2vec_format('/home/koushik/Desktop/NLP/FunWithPun-master/sample/GoogleNews-vectors-negative300.bin', binary=True)
 text = open('./test.txt','r');
 gold = open('./a.gold','r');
@@ -55,10 +58,8 @@ for s in our_answer:
             avg[k] +=model[s[j]][k]
     for j in range(len(avg)):
         avg[j] /= len(s)
-        X.append(avg)
+    X.append(avg)
 Y = list(our_answer.values())
-# print(X[4]);
-# print(Y[4]);
 X = np.array(X)
 
 class_mean = {}
@@ -109,9 +110,10 @@ for i in labels:
     class_mean[i].append(np.mean(dattt,axis=0))
     class_var[i].append(np.var(dattt,axis=0))
 
-fp1 = open(sys.argv[1])
+fp1 = open('./test_final1.txt')
 
 test = fp1.readlines()
+print(test);
 
 flag = 0
 
@@ -152,6 +154,6 @@ for s in test:
         break
 
 if flag == 1:
-    print('YES; the given context contains a pun')
+    print('YES')
 else:
-    print('NO; the given context does not contain a pun')
+    print('NO')
